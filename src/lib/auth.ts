@@ -1,6 +1,13 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { UserCredential } from 'firebase';
+import { auth } from './firebase';
 
-export const signUp = (email: string, password: string) : Promise<void> => {
+// サインアップ
+export const signUp = (email: string, password: string) : Promise<UserCredential> => {
   return createUserWithEmailAndPassword(auth, email, password);
 };
+
+// サインイン
+export const signIn = (email: string, password: string) : Promise<UserCredential> => {
+  return signInWithEmailAndPassword(auth, email, password);
+}
