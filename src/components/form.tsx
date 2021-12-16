@@ -1,16 +1,14 @@
-import { Box, TextField } from "@mui/material"
+import { Button, Grid, TextField } from "@mui/material"
 
 const SignInForm = () : JSX.Element => {
   return (
-    <Box 
-      component="form"
-      sx={{
-        '& > :not(style)' : {m: 1, width: '50ch'},
-      }}
-    >
-      <TextField id="signInEmailForm" label="Email" variant="outlined"/>
-      <TextField id="signInPasswordForm" label="Password" type="password" variant="outlined"/>
-    </Box>
+    <Grid container direction="column" alignItems="center">
+      <Grid item>
+        <TextField id="signInPasswordForm" label="Password" type="password" variant="outlined" margin="normal" fullWidth/>
+        <TextField id="signInEmailForm" label="Email" variant="outlined" margin="normal" fullWidth />
+        <Button variant="contained" size="large" fullWidth >Sign In</Button>
+      </Grid>
+    </Grid>
   )
 }
 
