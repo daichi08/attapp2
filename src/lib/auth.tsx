@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 import { createContext, useEffect, useState, FC } from 'react';
 import { auth } from './firebase';
 
+// TODO: 切り分け
 type AuthUserType = User | null | undefined;
 
 interface AuthContextProps{
@@ -25,3 +26,5 @@ const AuthProvider: FC = ({ children }) => {
     </AuthContext.Provider>
   )
 }
+
+export { AuthContext, AuthProvider }
