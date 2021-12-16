@@ -1,8 +1,8 @@
+import { SignInForm } from "../components/form"
+
 const Home = () : JSX.Element => {
   return (
-    <div>
-      Hello, World!
-    </div>
+    <SignInForm />
   )
 }
 
