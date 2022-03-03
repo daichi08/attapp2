@@ -1,18 +1,15 @@
-import { AppProps } from 'next/app'
-import { AuthProvider } from '../lib/auth'
-import { Container, CssBaseline } from '@mui/material'
-import MenuDrawer from '../components/DrawerHeader'
+import { AppProps } from "next/app";
+import { AuthProvider } from "../lib/auth";
+import { Container } from "@mui/material";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
-      <MenuDrawer>
-        <Container maxWidth="xl">
-          <Component {...pageProps} />
-        </Container>
-      </MenuDrawer>
+      <Container maxWidth="xl">
+        <Component {...pageProps} />
+      </Container>
     </AuthProvider>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;

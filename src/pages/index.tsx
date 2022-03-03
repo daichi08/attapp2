@@ -1,9 +1,12 @@
-import { SignInForm } from "../components/form"
+import { Container } from "@mui/material";
+import Typography from "@mui/material/Typography";
 
-const Home = () : JSX.Element => {
+const Home = (): JSX.Element => {
   return (
-    <SignInForm />
-  )
-}
+    <Container>
+      <Typography>Home</Typography>
+    </Container>
+  );
+};
 
-export default Home
+export default Home;

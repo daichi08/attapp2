@@ -1,18 +1,23 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, User } from 'firebase/auth';
-import { createContext, useEffect, useState, FC } from 'react';
-import { auth } from './firebase';
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  User,
+} from "firebase/auth";
+import { createContext, useEffect, useState, FC } from "react";
+import { auth } from "./firebase";
 
 // TODO: 切り分け
 type AuthUserType = User | null | undefined;
 
-interface AuthContextProps{
+interface AuthContextProps {
   currentUser: AuthUserType;
 }
 
 const AuthContext = createContext<AuthContextProps>({ currentUser: undefined });
 
 const AuthProvider: FC = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<AuthUserType>( undefined );
+  const [currentUser, setCurrentUser] = useState<AuthUserType>(undefined);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -21,10 +26,10 @@ const AuthProvider: FC = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{currentUser: currentUser}}>
+    <AuthContext.Provider value={{ currentUser: currentUser }}>
       {children}
     </AuthContext.Provider>
-  )
-}
+  );
+};
 
-export { AuthContext, AuthProvider }
+export { AuthContext, AuthProvider };
