@@ -14,48 +14,19 @@ import Router from "next/router";
 import { useContext } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../lib/firebase";
+import Header from "../components/header";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { currentUser } = useContext(AuthContext);
-  console.log(currentUser)
 
   return (
     <AuthProvider>
       <CssBaseline />
-      <AppBar position="static">
-        <Container>
-          <Toolbar>
-            <Typography>Header</Typography>
-            <Box>
-              {/* TODO: コンポーネント化 */}
-              <ButtonGroup variant="text" color="inherit">
-                <Button
-                  onClick={(e) => {
-                    e.preventDefault;
-                    Router.push("/signIn");
-                  }}
-                >
-                  サインイン
-                </Button>
-                <Button
-                  onClick={(e) => {
-                    e.preventDefault;
-                    Router.push("/signUp");
-                  }}
-                >
-                  サインアップ
-                </Button>
-              </ButtonGroup>
-            </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
+      <Header />
 
-
-        <Container>
-          <Component {...pageProps} />
-        </Container>
-
+      <Container>
+        <Component {...pageProps} />
+      </Container>
 
       <AppBar position="static" sx={{ position: "absolute", bottom: 0 }}>
         <Container>
@@ -64,7 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           </Toolbar>
         </Container>
       </AppBar>
-      </AuthProvider>
+    </AuthProvider>
   );
 }
 

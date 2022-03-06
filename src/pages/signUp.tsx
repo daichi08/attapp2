@@ -1,6 +1,6 @@
 import { Button, Container, TextField, Typography } from "@mui/material";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { useState, useEffect } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
 import { auth } from '../lib/firebase';
 
 const SignUp = (): JSX.Element => {

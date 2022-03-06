@@ -9,7 +9,7 @@ const SignIn = (): JSX.Element => {
 
   return (
     <Container>
-      <Typography>signUpForm</Typography>
+      <Typography>signInForm</Typography>
       <TextField
         label="email"
         value={email}

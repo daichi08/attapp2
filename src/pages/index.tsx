@@ -10,8 +10,6 @@ const Home = (): JSX.Element => {
   return (
     <Container>
       <Typography>Home</Typography>
-      {currentUser ? "ok" : "ng"}
-      <Button onClick={() => {signOut(auth)}}>サインアウト</Button>
     </Container>
   );
 };
