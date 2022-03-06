@@ -1,11 +1,11 @@
 import { Container, Typography } from '@mui/material';
 
-const Home = (): JSX.Element => {
+const SignIn = (): JSX.Element => {
   return (
     <Container>
-      <Typography>Home</Typography>
+      <Typography>signInForm</Typography>
     </Container>
   );
 };
 
-export default Home;
+export default SignIn;

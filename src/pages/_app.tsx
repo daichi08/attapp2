@@ -1,34 +1,50 @@
 import { AppProps } from "next/app";
 import { AuthProvider } from "../lib/auth";
-import { AppBar, Box, Container, CssBaseline, Typography, ButtonGroup, Button } from '@mui/material';
-import Toolbar from '@mui/material/Toolbar';
+import {
+  AppBar,
+  Box,
+  Container,
+  CssBaseline,
+  Typography,
+  ButtonGroup,
+  Button,
+} from "@mui/material";
+import Toolbar from "@mui/material/Toolbar";
+import Router from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <AppBar position="static" color='secondary'>
+      <CssBaseline />
+      <AppBar position="static">
         <Container>
           <Toolbar>
-            <Typography>
-              Header
-            </Typography>
+            <Typography>Header</Typography>
 
             <Box>
               <ButtonGroup variant="text" color="inherit">
-                <Button>サインイン</Button>
-                <Button>サインアップ</Button>
+                {/* TODO: 切り分け */}
+                <Button onClick={(e) => {e.preventDefault; Router.push("/signIn")}}>サインイン</Button>
+                <Button onClick={(e) => {e.preventDefault; Router.push("/signUp")}}>サインアップ</Button>
               </ButtonGroup>
             </Box>
           </Toolbar>
         </Container>
       </AppBar>
 
-      <Container>
       <AuthProvider>
-        <CssBaseline />
-        <Component {...pageProps} />
+        <Container>
+          <Component {...pageProps} />
+        </Container>
       </AuthProvider>
-    </Container>
+
+      <AppBar position="static" sx={{ position: "absolute", bottom: 0 }}>
+        <Container>
+          <Toolbar>
+            <Typography>Footer</Typography>
+          </Toolbar>
+        </Container>
+      </AppBar>
     </>
   );
 }
