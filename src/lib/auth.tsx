@@ -23,6 +23,7 @@ const AuthProvider: FC = ({ children }) => {
     onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
     });
+    console.log("onAuthStateChanged!")
   }, []);
 
   return (
