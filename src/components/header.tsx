@@ -1,17 +1,14 @@
 import {
-  AppBar,
-  Container,
+  AppBar, Button, ButtonGroup, Container,
   Toolbar,
-  Typography,
-  Box,
-  ButtonGroup,
-  Button,
+  Typography
 } from "@mui/material";
 import { signOut } from "firebase/auth";
 import Router from "next/router";
 import { useContext } from "react";
 import { AuthContext } from "../lib/auth";
 import { auth } from "../lib/firebase";
+import Layout from "./layout";
 
 const Header = (): JSX.Element => {
   const { currentUser } = useContext(AuthContext);
@@ -31,7 +28,7 @@ const Header = (): JSX.Element => {
             <Typography>Header</Typography>
           </Button>
 
-          <Box>
+          <Layout>
             {/* TODO: コンポーネント化 */}
             {currentUser ? (
               <Button
@@ -63,7 +60,7 @@ const Header = (): JSX.Element => {
                 </Button>
               </ButtonGroup>
             )}
-          </Box>
+          </Layout>
         </Toolbar>
       </Container>
     </AppBar>

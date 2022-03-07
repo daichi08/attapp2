@@ -1,32 +1,23 @@
-import { AppProps } from "next/app";
-import { AuthContext, AuthProvider } from "../lib/auth";
 import {
   AppBar,
-  Box,
   Container,
-  CssBaseline,
-  Typography,
-  ButtonGroup,
-  Button,
-  Toolbar,
+  CssBaseline, Toolbar, Typography
 } from "@mui/material";
-import Router from "next/router";
-import { useContext } from "react";
-import { signOut } from "firebase/auth";
-import { auth } from "../lib/firebase";
+import { AppProps } from "next/app";
+import { useEffect } from "react";
 import Header from "../components/header";
+import Layout from "../components/layout";
+import { AuthProvider } from "../lib/auth";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const { currentUser } = useContext(AuthContext);
-
   return (
     <AuthProvider>
       <CssBaseline />
       <Header />
 
-      <Container>
+      <Layout>
         <Component {...pageProps} />
-      </Container>
+      </Layout>
 
       <AppBar position="static" sx={{ position: "absolute", bottom: 0 }}>
         <Container>

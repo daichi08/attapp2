@@ -1,10 +1,7 @@
 import {
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  User,
+  onAuthStateChanged, User
 } from "firebase/auth";
-import { createContext, useEffect, useState, FC } from "react";
+import { createContext, FC, useEffect, useState } from "react";
 import { auth } from "./firebase";
 
 // TODO: 切り分け
@@ -33,3 +30,4 @@ const AuthProvider: FC = ({ children }) => {
 };
 
 export { AuthContext, AuthProvider };
+
