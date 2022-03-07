@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { CircularProgress, Container } from "@mui/material";
 import { useRouter } from "next/router";
 import { ReactNode, useContext } from "react";
 import { AuthContext } from "../lib/auth";
@@ -17,15 +17,15 @@ const Layout = ({ children }: Props): JSX.Element => {
       router.pathname.toLowerCase().startsWith("/signup")
     ) {
       router.replace("/");
-      return <Container>Loading...</Container>;
+      return <CircularProgress />;
     }
   }
 
   if (typeof currentUser == "undefined") {
-    return <Container>Loading...</Container>;
+    return <CircularProgress />;
   }
 
-  return <Container>{children}</Container>;
+  return <>{children}</>;
 };
 
 export default Layout;

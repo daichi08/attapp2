@@ -1,7 +1,9 @@
 import {
   AppBar,
   Container,
-  CssBaseline, Toolbar, Typography
+  CssBaseline,
+  Toolbar,
+  Typography,
 } from "@mui/material";
 import { AppProps } from "next/app";
 import { useEffect } from "react";
@@ -12,20 +14,22 @@ import { AuthProvider } from "../lib/auth";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
-      <CssBaseline />
-      <Header />
-
       <Layout>
-        <Component {...pageProps} />
-      </Layout>
+        <CssBaseline />
+        <Header />
 
-      <AppBar position="static" sx={{ position: "absolute", bottom: 0 }}>
         <Container>
-          <Toolbar>
-            <Typography>Footer</Typography>
-          </Toolbar>
+          <Component {...pageProps} />
         </Container>
-      </AppBar>
+
+        <AppBar position="static" sx={{ position: "absolute", bottom: 0 }}>
+          <Container>
+            <Toolbar>
+              <Typography>Footer</Typography>
+            </Toolbar>
+          </Container>
+        </AppBar>
+      </Layout>
     </AuthProvider>
   );
 }
