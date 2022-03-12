@@ -11,18 +11,23 @@ const Layout = ({ children }: Props): JSX.Element => {
   const { currentUser } = useContext(AuthContext);
   const router = useRouter();
 
+  if (typeof currentUser == "undefined") {
+    return <CircularProgress />;
+  }
+
   if (currentUser) {
     if (
-      router.pathname.toLowerCase().startsWith("/signin") ||
-      router.pathname.toLowerCase().startsWith("/signup")
+      router.pathname.toLowerCase().startsWith("/sign_in") ||
+      router.pathname.toLowerCase().startsWith("/sign_up")
     ) {
+      router.replace("/dashboard");
+      return <CircularProgress />;
+    }
+  } else {
+    if (router.pathname.toLocaleLowerCase().startsWith("/dashboard")) {
       router.replace("/");
       return <CircularProgress />;
     }
-  }
-
-  if (typeof currentUser == "undefined") {
-    return <CircularProgress />;
   }
 
   return <>{children}</>;

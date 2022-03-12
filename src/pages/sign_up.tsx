@@ -1,7 +1,7 @@
 import { Button, Container, TextField, Typography } from "@mui/material";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { auth } from '../lib/firebase';
+import { auth } from "../lib/firebase";
 
 const SignUp = (): JSX.Element => {
   const [email, setEmail] = useState<string>("");
@@ -25,9 +25,13 @@ const SignUp = (): JSX.Element => {
           setPassword(e.target.value);
         }}
       />
-      <Button onClick={() => {
-        createUserWithEmailAndPassword(auth, email, password)
-      }}>サインアップ</Button>
+      <Button
+        onClick={() => {
+          createUserWithEmailAndPassword(auth, email, password);
+        }}
+      >
+        サインアップ
+      </Button>
     </Container>
   );
 };

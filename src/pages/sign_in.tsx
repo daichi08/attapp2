@@ -1,7 +1,11 @@
-import { Button, Container, TextField, Typography } from '@mui/material';
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { useState } from 'react';
-import { auth } from '../lib/firebase';
+import { Button, Container, TextField, Typography } from "@mui/material";
+import {
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import { useState } from "react";
+import { auth } from "../lib/firebase";
 
 const SignIn = (): JSX.Element => {
   const [email, setEmail] = useState<string>("");
@@ -26,12 +30,20 @@ const SignIn = (): JSX.Element => {
           setPassword(e.target.value);
         }}
       />
-      <Button onClick={() => {
-        signInWithEmailAndPassword(auth, email, password)
-      }}>サインイン</Button>
-      <Button onClick={() => {
-        signInWithPopup(auth, provider)
-      }}>Googleでサインイン</Button>
+      <Button
+        onClick={() => {
+          signInWithEmailAndPassword(auth, email, password);
+        }}
+      >
+        サインイン
+      </Button>
+      <Button
+        onClick={() => {
+          signInWithPopup(auth, provider);
+        }}
+      >
+        Googleでサインイン
+      </Button>
     </Container>
   );
 };

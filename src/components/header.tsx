@@ -7,13 +7,14 @@ import {
   Typography,
 } from "@mui/material";
 import { signOut } from "firebase/auth";
-import Router from "next/router";
 import { useContext } from "react";
 import { AuthContext } from "../lib/auth";
 import { auth } from "../lib/firebase";
+import { useRouter } from 'next/router';
 
 const Header = (): JSX.Element => {
   const { currentUser } = useContext(AuthContext);
+  const router = useRouter();
 
   return (
     <AppBar position="static">
@@ -24,7 +25,7 @@ const Header = (): JSX.Element => {
             variant="text"
             onClick={(e) => {
               e.preventDefault;
-              Router.push("/");
+              router.push("/");
             }}
           >
             <Typography>Header</Typography>
@@ -33,21 +34,29 @@ const Header = (): JSX.Element => {
           <Container>
             {/* TODO: コンポーネント化 */}
             {currentUser ? (
-              <Button
-                variant="text"
-                color="inherit"
-                onClick={() => {
-                  signOut(auth);
-                }}
-              >
-                サインアウト
-              </Button>
+              <ButtonGroup variant="text" color="inherit">
+                <Button
+                  onClick={(e) => {
+                    e.preventDefault;
+                    router.push("/dashboard");
+                  }}
+                >
+                  ダッシュボード
+                </Button>
+                <Button
+                  onClick={() => {
+                    signOut(auth);
+                  }}
+                >
+                  サインアウト
+                </Button>
+              </ButtonGroup>
             ) : (
               <ButtonGroup variant="text" color="inherit">
                 <Button
                   onClick={(e) => {
                     e.preventDefault;
-                    Router.push("/signIn");
+                    router.push("/sign_in");
                   }}
                 >
                   サインイン
@@ -55,7 +64,7 @@ const Header = (): JSX.Element => {
                 <Button
                   onClick={(e) => {
                     e.preventDefault;
-                    Router.push("/signUp");
+                    router.push("/sign_up");
                   }}
                 >
                   サインアップ
