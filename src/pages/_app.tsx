@@ -6,6 +6,7 @@ import {
   Typography,
 } from '@mui/material';
 import { AppProps } from 'next/app';
+import Footer from '../components/Footer';
 import Header from '../components/header';
 import { AuthProvider } from '../lib/auth';
 
@@ -15,17 +16,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       <CssBaseline />
       <Header />
 
-      <Container>
+      <Container sx={{ p: 4 }}>
         <Component {...pageProps} />
       </Container>
 
-      <AppBar position='static' sx={{ position: 'absolute', bottom: 0 }}>
-        <Container>
-          <Toolbar>
-            <Typography>Footer</Typography>
-          </Toolbar>
-        </Container>
-      </AppBar>
+      <Footer />
     </AuthProvider>
   );
 }
