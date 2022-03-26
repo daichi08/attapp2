@@ -5,11 +5,11 @@ import {
   Container,
   Toolbar,
   Typography,
-} from "@mui/material";
-import { signOut } from "firebase/auth";
-import { useContext } from "react";
-import { AuthContext } from "../lib/auth";
-import { auth } from "../lib/firebase";
+} from '@mui/material';
+import { signOut } from 'firebase/auth';
+import { useContext } from 'react';
+import { AuthContext } from '../lib/auth';
+import { auth } from '../lib/firebase';
 import { useRouter } from 'next/router';
 
 const Header = (): JSX.Element => {
@@ -17,56 +17,51 @@ const Header = (): JSX.Element => {
   const router = useRouter();
 
   return (
-    <AppBar position="static">
+    <AppBar position='static'>
       <Container>
         <Toolbar>
           <Button
-            color="inherit"
-            variant="text"
+            color='inherit'
+            variant='text'
             onClick={(e) => {
               e.preventDefault;
-              router.push("/");
-            }}
-          >
+              router.push('/');
+            }}>
             <Typography>Header</Typography>
           </Button>
 
           <Container>
             {/* TODO: コンポーネント化 */}
             {currentUser ? (
-              <ButtonGroup variant="text" color="inherit">
+              <ButtonGroup variant='text' color='inherit'>
                 <Button
                   onClick={(e) => {
                     e.preventDefault;
-                    router.push("/dashboard");
-                  }}
-                >
+                    router.push('/dashboard');
+                  }}>
                   ダッシュボード
                 </Button>
                 <Button
                   onClick={() => {
                     signOut(auth);
-                  }}
-                >
+                  }}>
                   サインアウト
                 </Button>
               </ButtonGroup>
             ) : (
-              <ButtonGroup variant="text" color="inherit">
+              <ButtonGroup variant='text' color='inherit'>
                 <Button
                   onClick={(e) => {
                     e.preventDefault;
-                    router.push("/sign_in");
-                  }}
-                >
+                    router.push('/sign_in');
+                  }}>
                   サインイン
                 </Button>
                 <Button
                   onClick={(e) => {
                     e.preventDefault;
-                    router.push("/sign_up");
-                  }}
-                >
+                    router.push('/sign_up');
+                  }}>
                   サインアップ
                 </Button>
               </ButtonGroup>
